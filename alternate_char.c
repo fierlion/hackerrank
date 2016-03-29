@@ -4,6 +4,8 @@
 #include <ctype.h>
 
 int main() {
+    // input:
+    // int
     size_t size;
     int n = 0;
     scanf("%d", &n);
