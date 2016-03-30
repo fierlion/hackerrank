@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -22,16 +23,14 @@ int main() {
             line[len-1] = '\0';
             test_strings[i] = line;
         } else {
-            char newline[len+1];
-            for (int i=0; i<len; i++) {
-                newline[i] = line[i];
-            }
+            char *newline = (char *)malloc(len+1 * sizeof(char));
+	    strncpy(newline, line, len);
             newline[len] = '\0';
             test_strings[i] = newline;
         }
     }
     for (int i=0; i<n; i++) {
-        int str_len = (int)strlen(test_strings[i])-1;
+        int str_len = (int)strlen(test_strings[i]);
         int sum = 0;
         for (int j=0; j<str_len/2; j++) {
             int start = test_strings[i][j];
