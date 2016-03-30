@@ -4,6 +4,14 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+/* takes as input an int n--number of strings
+ * followed by n strings, each of which will be tested
+ * for its distance from being a palindrome:
+ * 'aba' -> 0
+ * 'abc' -> 2
+ * 'cba' -> 2
+ * the return value is the distances separated by newlines.
+ */
 int main() {
     size_t size;
     int n = 0;

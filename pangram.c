@@ -3,6 +3,10 @@
 #include <string.h>
 #include <ctype.h>
 
+/* checks input string, tests if all letters a-z 
+ * are present, aka is it a pangram.
+ * returns "pangram" if True, "not pangram" if False
+ */
 int main() {
     char in_str[1000];
     memset(in_str, -1, 1000);

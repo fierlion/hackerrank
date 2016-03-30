@@ -3,9 +3,16 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+/* input is int n--number of strings, followed
+ * by n strings.  These will be tested to determine
+ * how many letters must be deleted to create stricly 
+ * alternating characters.
+ * abab -> 0
+ * aabb -> 2
+ * these values will print one per line as output
+ */
+
 int main() {
-    // input:
-    // int
     size_t size;
     int n = 0;
     scanf("%d", &n);
