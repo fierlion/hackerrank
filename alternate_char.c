@@ -22,7 +22,7 @@ int main() {
     }
     //skip newline
     getc(stdin);
-    char **test_strings = (char **)calloc(n, sizeof(char *));
+    char **test_strings = calloc(n, sizeof(char *));
     for (int i=0; i<n; i++) {
         char *line = NULL;
         getline(&line, &size, stdin);

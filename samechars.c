@@ -6,20 +6,16 @@
 
 /* takes as input an int n--number of strings
  * followed by n strings, each of which will be tested
- * for its distance from being a palindrome:
- * 'aba' -> 0
- * 'abc' -> 2
- * 'cba' -> 2
- * the return value is the distances separated by newlines.
+ * for the number of letters a-z which are common to all:
+ * 'ade'
+ * 'abc'
+ * 'acd'
+ * only 'a' is common to all, so this returns 1
  */
 int main() {
     size_t size;
     int n = 0;
     scanf("%d", &n);
-    if (n<1 || n>10) {
-        printf("illegal argument\n");
-        return 1;
-    }
     //skip newline
     getc(stdin);
     char **test_strings = calloc(n, sizeof(char *));
@@ -37,21 +33,26 @@ int main() {
             test_strings[i] = newline;
         }
     }
+    int alpha[26] = {0};
     for (int i=0; i<n; i++) {
+        int inner_alpha[26] = {0};
         int str_len = (int)strlen(test_strings[i]);
-        int sum = 0;
-        for (int j=0; j<str_len/2; j++) {
-            int start = test_strings[i][j];
-            int end = test_strings[i][str_len-j-1];
-            if (start == end) {
-                continue;
-            } else if (start < end) {
-                sum += end-start;
-            } else {
-                sum += start-end;
+        for (int j=0; j<str_len; j++) {
+            int ascii = tolower(test_strings[i][j]) - 97;
+            if (ascii>=0 && ascii <26) {
+                if (inner_alpha[ascii] == 0){
+                    alpha[ascii] += 1;
+                }
+                inner_alpha[ascii] += 1;
             }
         }
-        printf("%d\n", sum);
     }
+    int result = 0;
+    for (int i=0; i<26; i++) {
+        if (alpha[i] == n) {
+            result += 1;
+        }
+    }
+    printf("%d\n", result);
     return 0;
 }
